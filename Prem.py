@@ -137,8 +137,9 @@ def ___mengikuti___():
         with requests.Session() as ses:
             ___zak = ses.get(f'https://i.instagram.com/api/v1/friendships/{___roz["id"]}/following/?count=5000', headers = {'user-agent': 'Mozilla/5.0 (Linux; Android 10; SM-G973F Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.198 Mobile Safari/537.36 Instagram 166.1.0.42.245 Android (29/10; 420dpi; 1080x2042; samsung; SM-G973F; beyond1; exynos9820; en_GB; 256099204)', 'cookie': open('Data/coki.txt','r').read()}).json()
             for z in ___zak['users']:
-                open('Dump/'+___file, 'a').write(z['username']+'<=>'+z['full_name']+'\n')
-                print(f"{P}{z['username']}<=>{z['full_name']}")
+                if len(z['full_name']) > 1:
+                    open('Dump/'+___file, 'a').write(z['username']+'<=>'+z['full_name']+'\n')
+                    print(f"{P}{z['username']}<=>{z['full_name']}")
             print(f"\n{B}[{P}*{B}]{P} Selesai...")
             print(f"{B}[{P}?{B}]{P} File Tersimpan Di :{K} Dump/{___file}")
             input(f"{M}[{P}Kembali{M}]{P}");___menu___()
@@ -159,8 +160,9 @@ def ___pengikut___():
         with requests.Session() as ses:
             ___zak = ses.get(f'https://i.instagram.com/api/v1/friendships/{___roz["id"]}/followers/?count=5000', headers = {'user-agent': 'Mozilla/5.0 (Linux; Android 10; SM-G973F Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.198 Mobile Safari/537.36 Instagram 166.1.0.42.245 Android (29/10; 420dpi; 1080x2042; samsung; SM-G973F; beyond1; exynos9820; en_GB; 256099204)', 'cookie': open('Data/coki.txt','r').read()}).json()
             for z in ___zak['users']:
-                open('Dump/'+___file, 'a').write(z['username']+'<=>'+z['full_name']+'\n')
-                print(f"{P}{z['username']}<=>{z['full_name']}")
+                if len(z['full_name']) > 1:
+                    open('Dump/'+___file, 'a').write(z['username']+'<=>'+z['full_name']+'\n')
+                    print(f"{P}{z['username']}<=>{z['full_name']}")
             print(f"\n{B}[{P}*{B}]{P} Selesai...")
             print(f"{B}[{P}?{B}]{P} File Tersimpan Di :{K} Dump/{___file}")
             input(f"{M}[{P}Kembali{M}]{P}");___menu___()
@@ -179,8 +181,9 @@ def ___activity___():
             ___roz = requests.get('https://www.instagram.com/accounts/activity/?__a=1', headers = {'user-agent': 'Mozilla/5.0 (Linux; Android 10; SM-G973F Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.198 Mobile Safari/537.36 Instagram 166.1.0.42.245 Android (29/10; 420dpi; 1080x2042; samsung; SM-G973F; beyond1; exynos9820; en_GB; 256099204)', 'cookie': open('Data/coki.txt','r').read()})
             ___zak = re.findall('"username":"(.*?)","full_name":"(.*?)",', ___roz.text)
             for z in ___zak:
-                open('Dump/'+___file, 'a').write(z[0]+'<=>'+z[1]+'\n')
-                print(f"{z[0]}<=>{z[1]}")
+                if len(z[1]) > 1:
+                    open('Dump/'+___file, 'a').write(z[0]+'<=>'+z[1]+'\n')
+                    print(f"{z[0]}<=>{z[1]}")
             print(f"\n{B}[{P}*{B}]{P} Selesai...")
             print(f"{B}[{P}?{B}]{P} File Tersimpan Di :{K} Dump/{___file}")
             input(f"{M}[{P}Kembali{M}]{P}");___menu___()
@@ -196,8 +199,9 @@ def ___beranda___():
             print(f"{P} ")
             ___roz = requests.get('https://i.instagram.com/api/v1/feed/reels_tray/', headers = {'user-agent': 'Mozilla/5.0 (Linux; Android 10; SM-G973F Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.198 Mobile Safari/537.36 Instagram 166.1.0.42.245 Android (29/10; 420dpi; 1080x2042; samsung; SM-G973F; beyond1; exynos9820; en_GB; 256099204)', 'cookie': open('Data/coki.txt','r').read()}).json()
             for z in ___roz['tray']:
-                open('Dump/'+___file, 'a').write(z['user']['username']+'<=>'+z['user']['full_name']+'\n')
-                print(f"{z['user']['username']}<=>{z['user']['full_name']}")
+                if len(z['user']['full_name']) > 1:
+                    open('Dump/'+___file, 'a').write(z['user']['username']+'<=>'+z['user']['full_name']+'\n')
+                    print(f"{z['user']['username']}<=>{z['user']['full_name']}")
             print(f"\n{B}[{P}*{B}]{P} Selesai...")
             print(f"{B}[{P}?{B}]{P} File Tersimpan Di :{K} Dump/{___file}")
             input(f"{M}[{P}Kembali{M}]{P}");___menu___()
@@ -219,8 +223,9 @@ def ___hastag___():
             ___roz = requests.get(f'https://www.instagram.com/explore/tags/{___tag}/?__a=1', headers = {'user-agent': 'Mozilla/5.0 (Linux; Android 10; SM-G973F Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.198 Mobile Safari/537.36 Instagram 166.1.0.42.245 Android (29/10; 420dpi; 1080x2042; samsung; SM-G973F; beyond1; exynos9820; en_GB; 256099204)', 'cookie': open('Data/coki.txt','r').read()})
             ___zak = re.findall('"username":"(.*?)","full_name":"(.*?)",', ___roz.text)
             for z in ___zak:
-                open('Dump/'+___file, 'a').write(z[0]+'<=>'+z[1]+'\n')
-                print(f"{z[0]}<=>{z[1]}")
+                if len(z[1]) > 1:
+                    open('Dump/'+___file, 'a').write(z[0]+'<=>'+z[1]+'\n')
+                    print(f"{z[0]}<=>{z[1]}")
             print(f"\n{B}[{P}*{B}]{P} Selesai...")
             print(f"{B}[{P}?{B}]{P} File Tersimpan Di :{K} Dump/{___file}")
             input(f"{M}[{P}Kembali{M}]{P}");___menu___()
@@ -259,8 +264,9 @@ def ___query___():
             ___file = ___query.replace(' ','_')+'.txt'
             ___roz = requests.get(f'https://www.instagram.com/web/search/topsearch/?context=blended&query={___query}&rank_token=0.3953592318270893&count=5000', headers = {'user-agent': 'Mozilla/5.0 (Linux; Android 10; SM-G973F Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.198 Mobile Safari/537.36 Instagram 166.1.0.42.245 Android (29/10; 420dpi; 1080x2042; samsung; SM-G973F; beyond1; exynos9820; en_GB; 256099204)', 'cookie': open('Data/coki.txt','r').read()}).json()
             for z in ___roz['users']:
-                open('Dump/'+___file, 'a').write(z['user']['username']+'<=>'+z['user']['full_name']+'\n')
-                print(f"{z['user']['username']}<=>{z['user']['full_name']}")
+                if len(z['user']['full_name']) > 1:
+                    open('Dump/'+___file, 'a').write(z['user']['username']+'<=>'+z['user']['full_name']+'\n')
+                    print(f"{z['user']['username']}<=>{z['user']['full_name']}")
             print(f"\n{B}[{P}*{B}]{P} Selesai...")
             print(f"{B}[{P}?{B}]{P} File Tersimpan Di :{K} Dump/{___file}")
             input(f"{M}[{P}Kembali{M}]{P}");___menu___()
